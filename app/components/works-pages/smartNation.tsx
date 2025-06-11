@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image'
 import { gsap } from 'gsap';
 
 const SmartNation = () => {
@@ -51,7 +52,7 @@ const SmartNation = () => {
   ];
 
   // State for selected icon
-  const [selectedIcon, setSelectedIcon] = useState(appIcons[1]); // Default to 'Default' icon
+  // const [selectedIcon, setSelectedIcon] = useState(appIcons[1]); // Default to 'Default' icon
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -98,7 +99,7 @@ const SmartNation = () => {
           {/* Top Header with Logo and Title */}
           <div className="flex items-center justify-between px-6 py-4 border-b bg-zinc-50 rounded-t-lg border-gray-300">
             <div className="w-16 h-16 flex items-center justify-between">
-              <img 
+              <Image 
                 src="/images/WorkImages/smartNationImages/sn-header-logo.png" 
                 alt="Smart Nation Logo" 
                 className="w-full h-full object-contain"
@@ -112,7 +113,7 @@ const SmartNation = () => {
             </div>
             
             <div className="w-12 h-12 flex opacity-25 items-center justify-center">
-              <img 
+              <Image 
                 src="/images/WorkImages/smartNationImages/sa-header-logo.svg" 
                 alt="SA Logo" 
                 className="w-full h-full object-contain"
@@ -125,7 +126,7 @@ const SmartNation = () => {
             {/* Left Column - Text */}
             <div className="pr-8">
               <p className="text-gray-500 text-lg leading-relaxed" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: '400' }}>
-                At Abiyantrik Solutions, I led the end-to-end design for Smart Nation, a home automation brand offering smart touch switches and smart MCBs. I worked across product branding, UI/UX design, and visual design—designing the complete mobile app experience along with custom icons, illustrations, micro-animations, and motion graphics. I also completely redesigned and developed the company's website using React and Next.js (thanks to AI), aligning it with the brand's modern and connected identity. Every element was crafted to reflect Smart Nation's vision of enabling a seamless and modern smart living experience.
+                At Abiyantrik Solutions, I led the end-to-end design for Smart Nation, a home automation brand offering smart touch switches and smart MCBs. I worked across product branding, UI/UX design, and visual design—designing the complete mobile app experience along with custom icons, illustrations, micro-animations, and motion graphics. I also completely redesigned and developed the company&apos;s website using React and Next.js (thanks to AI), aligning it with the brand&apos;s modern and connected identity. Every element was crafted to reflect Smart Nation&apos;s vision of enabling a seamless and modern smart living experience.
               </p>
             </div>
             {/* Right Column - Video */}
@@ -163,7 +164,7 @@ const SmartNation = () => {
             }}
           >
             <div className="max-w-4xl">
-              <img 
+              <Image 
                 src="/images/WorkImages/smartNationImages/AppMockups-3screens.png" 
                 alt="Smart Nation App Mockups" 
                 className="w-full h-auto"
@@ -187,7 +188,7 @@ const SmartNation = () => {
                 {/* On State */}
                 <div className="text-center">
                   <div className="mb-4">
-                    <img 
+                    <Image 
                       src="/images/WorkImages/smartNationImages/switchOn.png" 
                       alt="Switch On State" 
                       className="h-24 mx-auto object-contain"
@@ -201,7 +202,7 @@ const SmartNation = () => {
                 {/* Off State */}
                 <div className="text-center">
                   <div className="mb-4">
-                    <img 
+                    <Image 
                       src="/images/WorkImages/smartNationImages/switchOff.png" 
                       alt="Switch Off State" 
                       className="h-24 mx-auto object-contain"
@@ -215,7 +216,7 @@ const SmartNation = () => {
                 {/* Offline State */}
                 <div className="text-center">
                   <div className="mb-4">
-                    <img 
+                    <Image 
                       src="/images/WorkImages/smartNationImages/switchOffline.png" 
                       alt="Switch Offline State" 
                       className="h-24 mx-auto object-contain"
@@ -266,7 +267,7 @@ const SmartNation = () => {
 
                 {/* Right Column - Footer Logo */}
                 <div className="flex items-center justify-center">
-                  <img 
+                  <Image 
                     src="/images/WorkImages/smartNationImages/sa-footer-logo.svg" 
                     alt="SA Footer Logo" 
                     className="w-80 h-80 object-contain opacity-15"

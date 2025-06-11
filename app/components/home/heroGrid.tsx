@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image'
 
 const HeroSection = () => {
   return (
@@ -13,7 +14,7 @@ const HeroSection = () => {
             {/* Top Left - Introduction Text (Grid 1) */}
             <div className="flex items-center justify-center rounded-t-xl p-6 border-b border-gray-300 bg-zinc-50">
             <h1 className="text-4xl leading-tight" style={{ fontFamily: 'Garamond, Georgia, serif' }}>
-                <span className="text-gray-500">Hey,</span> I'm Satish Hebbal
+                <span className="text-gray-500">Hey,</span> I&apos;m Satish Hebbal
                 <br />
                 <span className="text-gray-500">a</span> Product Designer
                 <br />
@@ -26,7 +27,7 @@ const HeroSection = () => {
             {/* Bottom Left - Profile Image (Grid 3) */}
             <div className="flex justify-center items-end p-6 pb-0">
               <div className="w-80 h-96 rounded-lg ">
-                <img 
+                <Image 
                   src="/images/homeimages/myimage.png" 
                   alt="Satish Hebbal"
                   className="w-full h-full object-contain object-top"
@@ -41,7 +42,7 @@ const HeroSection = () => {
             {/* Top Right - Logo (Grid 2) */}
             <div className="flex items-center justify-center p-6 border-b border-gray-300">
               <div className="w-full h-28">
-                <img 
+                <Image 
                   src="/images/homeimages/sa.svg" 
                   alt="SA Logo"
                   className="w-full h-full object-contain"
@@ -60,7 +61,7 @@ const HeroSection = () => {
                   </p>
                   
                   <p className="text-gray-500 text-base leading-relaxed text-right" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: '400' }}>
-                    Mobile apps, web platforms, digital products — that's where I live and breathe, pouring my energy into creating experiences that just feel right.
+                    Mobile apps, web platforms, digital products — that&apos;s where I live and breathe, pouring my energy into creating experiences that just feel right.
                   </p>
                 </div>
 

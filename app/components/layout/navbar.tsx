@@ -1,5 +1,5 @@
 "use client"
-import Link from "next/link"
+
 import { usePathname, useRouter } from "next/navigation"
 import { useEffect, useRef } from "react"
 import { gsap } from "gsap"

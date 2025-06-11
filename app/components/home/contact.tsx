@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image'
 
 const Contact = () => {
   return (
@@ -139,7 +140,7 @@ const Contact = () => {
 
               {/* Right Column - Logo */}
               <div className="flex items-center justify-center">
-                <img 
+                <Image 
                   src="/images/HomeImages/sa-flower-logo.png" 
                   alt="SA Flower Logo" 
                   className="w-80 h-80 object-contain"
@@ -150,7 +151,7 @@ const Contact = () => {
             {/* Bottom Message */}
             <div className="mt-16 pt-8  text-center">
               <p className="text-gray-400 text-md" style={{ fontFamily: 'Garamond, Georgia, serif' }}>
-                Let's create something amazing together !
+                Let&apos;s create something amazing together !
               </p>
             </div>
           </div>

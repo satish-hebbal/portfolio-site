@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from 'react';
+import Image from 'next/image'
 
 const AbhiyantrikWebsite = () => {
   // State for image comparison slider
@@ -42,7 +43,7 @@ const AbhiyantrikWebsite = () => {
           {/* Top Header with Logo and Title */}
           <div className="flex items-center justify-between px-6 py-4 border-b bg-zinc-50 rounded-t-lg border-gray-300">
             <div className="w-16 h-16 flex items-center justify-between">
-              <img 
+              <Image 
                 src="/images/WorkImages/abhiyantrikImages/abhiyantrik-logo.png" 
                 alt="Abhiyantrik Logo" 
                 className="w-full h-full object-contain"
@@ -56,7 +57,7 @@ const AbhiyantrikWebsite = () => {
             </div>
             
             <div className="w-12 h-12 flex opacity-25 items-center justify-center">
-              <img 
+              <Image 
                 src="/images/WorkImages/smartNationImages/sa-header-logo.svg" 
                 alt="SA Logo" 
                 className="w-full h-full object-contain"
@@ -68,7 +69,7 @@ const AbhiyantrikWebsite = () => {
         {/* Hero Image */}
           <div className="flex w-full align-top justify-center">
             <div className="max-w-full">
-              <img 
+              <Image 
                 src="/images/WorkImages/abhiyantrikImages/websiteMockup.png" 
                 alt="Abhiyantrik Website Mockup" 
                 className="w-full h-auto"
@@ -86,7 +87,7 @@ const AbhiyantrikWebsite = () => {
                 landing page
               </h2>
               <p className="text-gray-500 text-lg leading-relaxed mb-6" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: '400' }}>
-                I designed and developed <strong>Abhiyantrik Solutions</strong> complete website experience—from initial sketches to a fully interactive platform. The site showcases Smart Nation's innovative home automation products through immersive product demonstrations, allowing visitors to experience the technology before they buy.
+                I designed and developed <strong>Abhiyantrik Solutions</strong> complete website experience—from initial sketches to a fully interactive platform. The site showcases Smart Nation&apos;s innovative home automation products through immersive product demonstrations, allowing visitors to experience the technology before they buy.
               </p>
               <p className="text-gray-500 text-lg leading-relaxed" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: '400' }}>
                 Visit the website : <a href="https://www.abhiyantriksolutions.in/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">https://www.abhiyantriksolutions.in/</a>
@@ -94,7 +95,7 @@ const AbhiyantrikWebsite = () => {
             </div>
             {/* Right Column - Image */}
             <div className="flex items-center align-baseline justify-center">
-              <img 
+              <Image 
                 src="/images/WorkImages/abhiyantrikImages/poster1.png" 
                 alt="Abhiyantrik Poster" 
                 className="max-h-[500px] object-contain rounded-t-xl "
@@ -116,7 +117,7 @@ const AbhiyantrikWebsite = () => {
           <div className="px-6 py-16">
             {/* Flow Image */}
             <div className="flex items-center justify-center mb-12">
-              <img 
+              <Image 
                 src="/images/WorkImages/abhiyantrikImages/flow.png" 
                 alt="Development Flow" 
                 className="w-full h-auto max-w-5xl"
@@ -200,7 +201,7 @@ const AbhiyantrikWebsite = () => {
                   Smart MCB Experience
                 </h4>
                 <p className="text-gray-500 text-lg leading-relaxed" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: '400' }}>
-                  Toggle the MCB to witness the synchronized app response. This demo showcases the reliability and instant feedback that Smart Nation's electrical solutions provide.
+                  Toggle the MCB to witness the synchronized app response. This demo showcases the reliability and instant feedback that Smart Nation&apos;s electrical solutions provide.
                 </p>
               </div>
             </div>
@@ -238,7 +239,7 @@ const AbhiyantrikWebsite = () => {
               >
                 {/* Before Image (Raw) */}
                 <div className="absolute rounded-md inset-0">
-                  <img 
+                  <Image 
                     src="/images/WorkImages/abhiyantrikImages/product-raw.png" 
                     alt="Product Raw" 
                     className="w-full h-full object-contain rounded-md"
@@ -251,7 +252,7 @@ const AbhiyantrikWebsite = () => {
                   className="absolute rounded-md inset-0 overflow-hidden"
                   style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
                 >
-                  <img 
+                  <Image 
                     src="/images/WorkImages/abhiyantrikImages/product-render.png" 
                     alt="Product Rendered" 
                     className="w-full h-full object-contain rounded-md"
@@ -313,7 +314,7 @@ const AbhiyantrikWebsite = () => {
 
               {/* Right Column - Footer Logo */}
               <div className="flex items-center justify-center">
-                <img 
+                <Image 
                   src="/images/WorkImages/smartNationImages/sa-footer-logo.svg" 
                   alt="SA Footer Logo" 
                   className="w-80 h-80 object-contain opacity-15"
