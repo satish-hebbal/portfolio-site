@@ -1,6 +1,6 @@
 "use client";
-import { useEffect, useRef } from 'react';
-import { usePathname } from 'next/navigation'; // ✅ Removed unused useRouter
+import { useEffect, useRef, useCallback } from 'react';
+import { usePathname } from 'next/navigation';
 import { gsap } from 'gsap';
 
 declare global {
@@ -34,8 +34,8 @@ export default function PageTransitionWrapper({ children, isWorkPage = false }: 
     }
   }, [pathname, isWorkPage]);
 
-  // ✅ Properly typed exitPage function
-  const exitPage = (callback?: () => void) => {
+  // ✅ Use useCallback to prevent dependency issues
+  const exitPage = useCallback((callback?: () => void) => {
     if (!containerRef.current) return;
 
     if (isWorkPage) {
@@ -55,9 +55,9 @@ export default function PageTransitionWrapper({ children, isWorkPage = false }: 
         onComplete: callback
       });
     }
-  };
+  }, [isWorkPage]);
 
-  // ✅ Typing + Dependency fix
+  // ✅ Now exitPage won't change on every render
   useEffect(() => {
     window.exitPage = exitPage;
   }, [exitPage]);

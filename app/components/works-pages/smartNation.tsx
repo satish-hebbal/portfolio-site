@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Image from 'next/image'
 import { gsap } from 'gsap';
 
@@ -8,48 +8,48 @@ const SmartNation = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   
   // App icons data with corresponding mockups
-  const appIcons = [
-    { 
-      name: 'Beta', 
-      src: '/images/WorkImages/smartNationImages/app-occations/beta.png',
-      mockup: '/images/WorkImages/smartNationImages/mobileMockUP/beta-mockup.png'
-    },
-    { 
-      name: 'Default', 
-      src: '/images/WorkImages/smartNationImages/app-occations/default.png',
-      mockup: '/images/WorkImages/smartNationImages/mobileMockUP/default-mockup.png'
-    },
-    { 
-      name: 'V2', 
-      src: '/images/WorkImages/smartNationImages/app-occations/v2.png',
-      mockup: '/images/WorkImages/smartNationImages/mobileMockUP/v2-mockup.png'
-    },
-    { 
-      name: 'National Festival', 
-      src: '/images/WorkImages/smartNationImages/app-occations/national-fest.png',
-      mockup: '/images/WorkImages/smartNationImages/mobileMockUP/national-fest-mockup.png'
-    },
-    { 
-      name: 'Product Launch', 
-      src: '/images/WorkImages/smartNationImages/app-occations/product-launch.png',
-      mockup: '/images/WorkImages/smartNationImages/mobileMockUP/product-launch-mockup.png'
-    },
-    { 
-      name: 'Deepawali', 
-      src: '/images/WorkImages/smartNationImages/app-occations/deepawali.png',
-      mockup: '/images/WorkImages/smartNationImages/mobileMockUP/deepawali-mockup.png'
-    },
-    { 
-      name: 'Save Energy', 
-      src: '/images/WorkImages/smartNationImages/app-occations/save-energy.png',
-      mockup: '/images/WorkImages/smartNationImages/mobileMockUP/save-energy-mockup.png'
-    },
-    { 
-      name: 'Christmas', 
-      src: '/images/WorkImages/smartNationImages/app-occations/crismas.png',
-      mockup: '/images/WorkImages/smartNationImages/mobileMockUP/crismas-mockup.png'
-    }
-  ];
+  // const appIcons = [
+  //   { 
+  //     name: 'Beta', 
+  //     src: '/images/WorkImages/smartNationImages/app-occations/beta.png',
+  //     mockup: '/images/WorkImages/smartNationImages/mobileMockUP/beta-mockup.png'
+  //   },
+  //   { 
+  //     name: 'Default', 
+  //     src: '/images/WorkImages/smartNationImages/app-occations/default.png',
+  //     mockup: '/images/WorkImages/smartNationImages/mobileMockUP/default-mockup.png'
+  //   },
+  //   { 
+  //     name: 'V2', 
+  //     src: '/images/WorkImages/smartNationImages/app-occations/v2.png',
+  //     mockup: '/images/WorkImages/smartNationImages/mobileMockUP/v2-mockup.png'
+  //   },
+  //   { 
+  //     name: 'National Festival', 
+  //     src: '/images/WorkImages/smartNationImages/app-occations/national-fest.png',
+  //     mockup: '/images/WorkImages/smartNationImages/mobileMockUP/national-fest-mockup.png'
+  //   },
+  //   { 
+  //     name: 'Product Launch', 
+  //     src: '/images/WorkImages/smartNationImages/app-occations/product-launch.png',
+  //     mockup: '/images/WorkImages/smartNationImages/mobileMockUP/product-launch-mockup.png'
+  //   },
+  //   { 
+  //     name: 'Deepawali', 
+  //     src: '/images/WorkImages/smartNationImages/app-occations/deepawali.png',
+  //     mockup: '/images/WorkImages/smartNationImages/mobileMockUP/deepawali-mockup.png'
+  //   },
+  //   { 
+  //     name: 'Save Energy', 
+  //     src: '/images/WorkImages/smartNationImages/app-occations/save-energy.png',
+  //     mockup: '/images/WorkImages/smartNationImages/mobileMockUP/save-energy-mockup.png'
+  //   },
+  //   { 
+  //     name: 'Christmas', 
+  //     src: '/images/WorkImages/smartNationImages/app-occations/crismas.png',
+  //     mockup: '/images/WorkImages/smartNationImages/mobileMockUP/crismas-mockup.png'
+  //   }
+  // ];
 
   // State for selected icon
   // const [selectedIcon, setSelectedIcon] = useState(appIcons[1]); // Default to 'Default' icon
