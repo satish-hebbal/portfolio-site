@@ -1,101 +1,63 @@
 "use client";
 
-import React, { useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image'
-import { gsap } from 'gsap';
 
 const SmartNation = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  
   // App icons data with corresponding mockups
-  // const appIcons = [
-  //   { 
-  //     name: 'Beta', 
-  //     src: '/images/WorkImages/smartNationImages/app-occations/beta.png',
-  //     mockup: '/images/WorkImages/smartNationImages/mobileMockUP/beta-mockup.png'
-  //   },
-  //   { 
-  //     name: 'Default', 
-  //     src: '/images/WorkImages/smartNationImages/app-occations/default.png',
-  //     mockup: '/images/WorkImages/smartNationImages/mobileMockUP/default-mockup.png'
-  //   },
-  //   { 
-  //     name: 'V2', 
-  //     src: '/images/WorkImages/smartNationImages/app-occations/v2.png',
-  //     mockup: '/images/WorkImages/smartNationImages/mobileMockUP/v2-mockup.png'
-  //   },
-  //   { 
-  //     name: 'National Festival', 
-  //     src: '/images/WorkImages/smartNationImages/app-occations/national-fest.png',
-  //     mockup: '/images/WorkImages/smartNationImages/mobileMockUP/national-fest-mockup.png'
-  //   },
-  //   { 
-  //     name: 'Product Launch', 
-  //     src: '/images/WorkImages/smartNationImages/app-occations/product-launch.png',
-  //     mockup: '/images/WorkImages/smartNationImages/mobileMockUP/product-launch-mockup.png'
-  //   },
-  //   { 
-  //     name: 'Deepawali', 
-  //     src: '/images/WorkImages/smartNationImages/app-occations/deepawali.png',
-  //     mockup: '/images/WorkImages/smartNationImages/mobileMockUP/deepawali-mockup.png'
-  //   },
-  //   { 
-  //     name: 'Save Energy', 
-  //     src: '/images/WorkImages/smartNationImages/app-occations/save-energy.png',
-  //     mockup: '/images/WorkImages/smartNationImages/mobileMockUP/save-energy-mockup.png'
-  //   },
-  //   { 
-  //     name: 'Christmas', 
-  //     src: '/images/WorkImages/smartNationImages/app-occations/crismas.png',
-  //     mockup: '/images/WorkImages/smartNationImages/mobileMockUP/crismas-mockup.png'
-  //   }
-  // ];
+  const appIcons = [
+    { 
+      name: 'Beta', 
+      src: '/images/WorkImages/smartNationImages/app-occations/beta.png',
+      mockup: '/images/WorkImages/smartNationImages/mobileMockUP/beta-mockup.png'
+    },
+    { 
+      name: 'Default', 
+      src: '/images/WorkImages/smartNationImages/app-occations/default.png',
+      mockup: '/images/WorkImages/smartNationImages/mobileMockUP/default-mockup.png'
+    },
+    { 
+      name: 'V2', 
+      src: '/images/WorkImages/smartNationImages/app-occations/v2.png',
+      mockup: '/images/WorkImages/smartNationImages/mobileMockUP/v2-mockup.png'
+    },
+    { 
+      name: 'National Festival', 
+      src: '/images/WorkImages/smartNationImages/app-occations/national-fest.png',
+      mockup: '/images/WorkImages/smartNationImages/mobileMockUP/national-fest-mockup.png'
+    },
+    { 
+      name: 'Product Launch', 
+      src: '/images/WorkImages/smartNationImages/app-occations/product-launch.png',
+      mockup: '/images/WorkImages/smartNationImages/mobileMockUP/product-launch-mockup.png'
+    },
+    { 
+      name: 'Deepawali', 
+      src: '/images/WorkImages/smartNationImages/app-occations/deepawali.png',
+      mockup: '/images/WorkImages/smartNationImages/mobileMockUP/deepawali-mockup.png'
+    },
+    { 
+      name: 'Save Energy', 
+      src: '/images/WorkImages/smartNationImages/app-occations/save-energy.png',
+      mockup: '/images/WorkImages/smartNationImages/mobileMockUP/save-energy-mockup.png'
+    },
+    { 
+      name: 'Christmas', 
+      src: '/images/WorkImages/smartNationImages/app-occations/crismas.png',
+      mockup: '/images/WorkImages/smartNationImages/mobileMockUP/crismas-mockup.png'
+    }
+  ];
 
   // State for selected icon
-  // const [selectedIcon, setSelectedIcon] = useState(appIcons[1]); // Default to 'Default' icon
-
-  useEffect(() => {
-    if (!containerRef.current) return;
-
-    // Work page entrance animation (from bottom)
-    gsap.fromTo(containerRef.current,
-      {
-        y: '100vh',
-        opacity: 0,
-      },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        ease: "power3.out",
-      }
-    );
-
-    // Staggered animation for content sections
-    const sections = containerRef.current.querySelectorAll('.section-animate');
-    gsap.fromTo(sections,
-      {
-        y: 50,
-        opacity: 0,
-      },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: "power2.out",
-        delay: 0.4
-      }
-    );
-  }, []);
+  const [selectedIcon, setSelectedIcon] = useState(appIcons[1]); // Default to 'Default' icon
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white">
       {/* Main Container with Grid Lines */}
       <div className="max-w-6xl mx-auto rounded-t-lg border-l border-r border-t border-gray-300 h-full">
         
         {/* Header Section */}
-        <div className="pb-8 border-b border-gray-300 section-animate">
+        <div className="pb-8 border-b border-gray-300">
           {/* Top Header with Logo and Title */}
           <div className="flex items-center justify-between px-6 py-4 border-b bg-zinc-50 rounded-t-lg border-gray-300">
             <div className="w-16 h-16 flex items-center justify-between">
@@ -146,7 +108,7 @@ const SmartNation = () => {
         </div>
 
         {/* App UI/UX Section */}
-        <div className="border-b border-gray-300 section-animate">
+        <div className="border-b border-gray-300">
           {/* Section Header */}
           <div className="px-6 py-8 border-b border-gray-300 bg-zinc-50">
             <h2 className="text-4xl font-light text-left" style={{ fontFamily: 'Garamond, Georgia, serif' }}>
@@ -231,11 +193,256 @@ const SmartNation = () => {
           </div>
         </div>
 
-        {/* Additional sections with section-animate class for staggered animations */}
-        {/* ... (rest of your existing sections, each wrapped with section-animate class) ... */}
+        {/* Adding Appliance Section */}
+        <div className="border-b border-gray-300">
+          {/* Section Header */}
+          <div className="px-6 py-8 border-b border-gray-300 bg-zinc-50">
+            <h3 className="text-3xl font-light text-left" style={{ fontFamily: 'Garamond, Georgia, serif' }}>
+              Adding Appliance
+            </h3>
+          </div>
+
+          {/* Content Layout */}
+          <div className="px-6 py-16">
+            {/* Description */}
+            <div className="mb-12">
+              <p className="text-gray-500 text-lg leading-relaxed max-w-4xl" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: '400' }}>
+                A simple interface to add appliances by selecting a configured switchboard (SWB), choosing a switch module, assigning an icon and name, and instantly controlling them from the dashboard.
+              </p>
+            </div>
+
+            {/* Image */}
+            <div className="flex items-center justify-center">
+              <Image 
+                src="/images/WorkImages/smartNationImages/AddApp.png" 
+                alt="Adding Appliance Flow" 
+                className="w-full h-auto max-w-5xl"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Device Provisioning Section */}
+        <div className="border-b border-gray-300">
+          {/* Section Header */}
+          <div className="px-6 py-8 border-b border-gray-300 bg-zinc-50">
+            <h3 className="text-3xl font-light text-left" style={{ fontFamily: 'Garamond, Georgia, serif' }}>
+              Device Provisioning
+            </h3>
+          </div>
+
+          {/* Content Layout */}
+          <div className="px-6 py-16">
+            {/* Description */}
+            <div className="mb-12">
+              <p className="text-gray-500 text-lg leading-relaxed max-w-4xl" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: '400' }}>
+                A seamless UX for configuring Smart Switchboards—select, discover, connect to Wi-Fi, assign, and save effortlessly.
+              </p>
+            </div>
+
+            {/* Image */}
+            <div className="flex items-center justify-center">
+              <Image 
+                src="/images/WorkImages/smartNationImages/deviceProv.png" 
+                alt="Device Provisioning Flow" 
+                className="w-full h-auto max-w-5xl"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Automation Section */}
+        <div className="border-b border-gray-300">
+          {/* Section Header */}
+          <div className="px-6 py-8 border-b border-gray-300 bg-zinc-50">
+            <h3 className="text-3xl font-light text-left" style={{ fontFamily: 'Garamond, Georgia, serif' }}>
+              Automation
+            </h3>
+          </div>
+
+          {/* Content Layout */}
+          <div className="px-6 py-16">
+            {/* Description */}
+            <div className="mb-12">
+              <p className="text-gray-500 text-lg leading-relaxed max-w-4xl" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: '400' }}>
+                Automate your appliances with ease using Routine and Timer modes. Set fixed schedules to turn appliances on or off at specific times on selected days, or use countdown timers for temporary control — all from a clean, intuitive interface.
+              </p>
+            </div>
+
+            {/* Image */}
+            <div className="flex items-center justify-center">
+              <Image 
+                src="/images/WorkImages/smartNationImages/automation.png" 
+                alt="Automation Features" 
+                className="w-full h-auto max-w-5xl"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Appliance Icons Section */}
+        <div className="border-b border-gray-300">
+          {/* Section Header */}
+          <div className="px-6 py-8 border-b border-gray-300 bg-zinc-50">
+            <h3 className="text-3xl font-light text-left" style={{ fontFamily: 'Garamond, Georgia, serif' }}>
+              Appliance Icons
+            </h3>
+          </div>
+
+          {/* Content Layout */}
+          <div className="px-6 py-16">
+            {/* Two Column Layout */}
+            <div className="grid grid-cols-2 gap-16 items-center">
+              {/* Left Column - Description */}
+              <div>
+                <p className="text-gray-500 text-lg leading-relaxed" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: '400' }}>
+                  I used Material Icons as a base and customized them by adding subtle roundness and designing a few from scratch to match specific appliances.
+                </p>
+              </div>
+
+              {/* Right Column - Icons Grid */}
+              <div className="flex items-center justify-center">
+                <Image 
+                  src="/images/WorkImages/smartNationImages/applianceIcons.png" 
+                  alt="Appliance Icons Grid" 
+                  className="w-full h-auto max-w-lg"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Navigation Icons Section */}
+        <div className="border-b border-gray-300">
+          {/* Section Header */}
+          <div className="px-6 py-8 border-b border-gray-300 bg-zinc-50">
+            <h3 className="text-3xl font-light text-left" style={{ fontFamily: 'Garamond, Georgia, serif' }}>
+              Navigation Icons
+            </h3>
+          </div>
+
+          {/* Content Layout */}
+          <div className="px-6 py-16">
+            {/* Icon States Grid */}
+            <div className="space-y-12">
+              {/* Icon Labels */}
+              <div className="flex justify-center gap-38 ">
+                <span className="text-gray-400 text-md" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: '400' }}>Home</span>
+                <span className="text-gray-400 text-md" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: '400' }}>MCB</span>
+                <span className="text-gray-400 text-md" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: '400' }}>Automation</span>
+                <span className="text-gray-400 text-md" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: '400' }}>Profile</span>
+              </div>
+
+              {/* Raw Icons Row */}
+              <div className="flex justify-center items-center gap-16">
+                <Image src="/images/WorkImages/smartNationImages/homeIcon-raw.png" alt="Home Icon Raw" className="w-36 h-36 object-contain" />
+                <Image src="/images/WorkImages/smartNationImages/MCBicon-raw.png" alt="MCB Icon Raw" className="w-36 h-36 object-contain" />
+                <Image src="/images/WorkImages/smartNationImages/autoIcon-raw.png" alt="Automation Icon Raw" className="w-36 h-36 object-contain" />
+                <Image src="/images/WorkImages/smartNationImages/profileIcon-raw.png" alt="Profile Icon Raw" className="w-36 h-36 object-contain" />
+              </div>
+
+              {/* Active Icons Row */}
+              <div className="flex justify-center items-center gap-16">
+                <Image src="/images/WorkImages/smartNationImages/homeIcon-act.png" alt="Home Icon Active" className="w-36 h-36 object-contain" />
+                <Image src="/images/WorkImages/smartNationImages/MCBicon-act.png" alt="MCB Icon Active" className="w-36 h-36 object-contain" />
+                <Image src="/images/WorkImages/smartNationImages/autoIcon-act.png" alt="Automation Icon Active" className="w-36 h-36 object-contain" />
+                <Image src="/images/WorkImages/smartNationImages/profileIcon-act.png" alt="Profile Icon Active" className="w-36 h-36 object-contain" />
+              </div>
+
+              {/* Icon Animation Video */}
+              <div className="flex justify-center mt-16">
+                <video 
+                  className="w-full h-auto  rounded-lg"
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline
+                >
+                  <source src="/images/WorkImages/smartNationImages/icon.mov" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* App Icon That Dress for the Occasion Section */}
+        <div className="border-b border-gray-300">
+          {/* Section Header */}
+          <div className="px-6 py-8 border-b border-gray-300 bg-zinc-50">
+            <h3 className="text-3xl font-light text-left" style={{ fontFamily: 'Garamond, Georgia, serif' }}>
+              App Icon That Dress for the Occasion
+            </h3>
+          </div>
+
+          {/* Content Layout */}
+          <div className=" ">
+            {/* Two Column Layout */}
+            <div className="grid grid-cols-2 items-start ">
+              {/* Left Column - Large Selected Icon */}
+              <div className="flex items-center justify-center py-16 border-r border-gray-300">
+                <Image 
+                  src={selectedIcon.src}
+                  alt="Selected App Icon" 
+                  className="w-80 h-80 object-contain"
+                  style={{ 
+                    filter: 'drop-shadow(0 10px 20px rgba(0, 0, 0, 0.25))',
+                  }}
+                />
+              </div>
+
+              {/* Right Column - Mobile Mockup */}
+              <div className="flex flex-col gap-18 items-center justify-center">
+                <Image 
+                  src={selectedIcon.mockup}
+                  alt={`${selectedIcon.name} Mobile Mockup`}
+                  className="w-96 h-auto object-contain"
+                />
+                <h3>
+                  <span className="text-gray-500 text-xl" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: '400' }}>
+                    {selectedIcon.name} Icon
+                  </span>
+                </h3>
+              </div>
+            </div>
+
+            {/* Icon Selection Row */}
+            <div className="pt-6 border-t border-gray-300">
+              <div className="relative flex items-center justify-center gap-6 flex-wrap">
+                {appIcons.map((icon, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setSelectedIcon(icon)}
+                    className="w-20 h-20 p-2 mb-6 rounded-2xl transition-all duration-200 "
+                    
+                  >
+                    <Image 
+                      src={icon.src}
+                      alt={icon.name}
+                      className="w-full h-full object-contain rounded-xl"
+                      style={{ 
+                      boxShadow: '0 2px 8px rgba(0, 0, 0, 0.25)',
+                    }}
+                    />
+                  </button>
+                ))}
+                
+                {/* Moving Indicator */}
+                <div 
+                  className="absolute bottom-0 h-2  bg-zinc-300 rounded-t-md transition-all duration-500 ease-in-out"
+                  style={{
+                    width: '42px',
+                    left: '50%',
+                    transform: `translateX(calc(-50% + ${(appIcons.findIndex(icon => icon.src === selectedIcon.src) - (appIcons.length - 1) / 2) * (80 + 24)}px))`,
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
 
        {/* Ready to Collab Section */}
-          <div className="rounded-b-lg section-animate">
+          <div className="rounded-b-lg">
             {/* Content Layout */}
             <div className="px-6 py-16">
               {/* Two Column Layout */}
