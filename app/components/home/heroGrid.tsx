@@ -28,7 +28,8 @@ const HeroSection = () => {
             <div className="flex justify-center items-end p-6 pb-0">
               <div className="w-80 h-96 rounded-lg ">
                 <Image 
-                  src="/images/homeImages/myImage.png" 
+                  src="/images/HomeImages/myImage.png" 
+                  // public\images\HomeImages\myImage.png
                   alt="Satish Hebbal"
                   className="w-full h-full object-contain object-top"
                 />
@@ -43,7 +44,7 @@ const HeroSection = () => {
             <div className="flex items-center justify-center p-6 border-b border-gray-300">
               <div className="w-full h-28">
                 <Image 
-                  src="/images/homeImages/sa.svg" 
+                  src="/images/HomeImages/sa.svg" 
                   alt="SA Logo"
                   className="w-full h-full object-contain"
                 />
