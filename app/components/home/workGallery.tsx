@@ -8,12 +8,27 @@ const WorkGallery = () => {
   const galleryRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [scrollX, setScrollX] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Check if mobile on mount and resize
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768); // md breakpoint
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
 
   useEffect(() => {
     const gallery = galleryRef.current;
     const wrapper = wrapperRef.current;
 
-    if (!gallery || !wrapper) return;
+    if (!gallery || !wrapper || isMobile) return; // Skip mouse interaction on mobile
 
     const handleMouseMove = (e: MouseEvent) => {
       const mouseX = e.clientX;
@@ -32,13 +47,13 @@ const WorkGallery = () => {
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, []);
+  }, [isMobile]);
 
   return (
-    <div className="bg-white">
+    <div className="bg-white mt-8 md:mt-0">
       {/* Works Title */}
-      <div className="text-center mb-12">
-        <h2 className="text-6xl font-light text-black" style={{ fontFamily: 'Garamond, Georgia, serif' }}>
+      <div className="text-center mb-8 md:mb-12">
+        <h2 className="text-4xl md:text-6xl font-light text-black" style={{ fontFamily: 'Garamond, Georgia, serif' }}>
           Works
         </h2>
       </div>
@@ -46,22 +61,26 @@ const WorkGallery = () => {
       {/* Full Width Gallery Container */}
       <div 
         ref={wrapperRef}
-        className="gallery-wrapper overflow-hidden relative w-full"
-        style={{ height: '700px' }}
+        className={`gallery-wrapper relative w-full ${
+          isMobile ? 'overflow-x-auto overflow-y-hidden' : 'overflow-hidden'
+        }`}
+        style={{ height: isMobile ? '500px' : '700px' }}
       >
         <div 
           ref={galleryRef}
-          className="gallery flex items-start justify-center gap-18 h-full pl-16 pt-8"
+          className={`gallery flex items-start gap-12 md:gap-18 h-full ${
+            isMobile ? 'pl-6 pt-4' : 'justify-center pl-16 pt-8'
+          }`}
           style={{ 
-            width: 'max-content',
-            transform: `translateX(${scrollX}px)`,
-            transition: 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+            width: isMobile ? 'max-content' : 'max-content',
+            transform: isMobile ? 'none' : `translateX(${scrollX}px)`,
+            transition: isMobile ? 'none' : 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
           }}
         >
           {/* Text Info */}
-          <div className="flex-shrink-0" style={{ width: '320px' }}>
+          <div className="flex-shrink-0" style={{ width: isMobile ? '180px' : '320px' }}>
             <p
-              className="text-gray-300 text-4xl leading-relaxed"
+              className={`text-gray-300 ${isMobile ? 'text-2xl' : 'text-4xl'} leading-relaxed`}
               style={{ fontFamily: 'Poppins, sans-serif', fontWeight: '400' }}
             >
               <span className="text-orange-300">constantly</span>{' '}
@@ -73,11 +92,10 @@ const WorkGallery = () => {
             </p>
           </div>
 
-
           {/* Frame 1 - Smart Nation */}
           <div className="flex-shrink-0">
             <Link href="/works/smartNation" className="block">
-              <figure className="picture-frame cursor-pointer">
+              <figure className={`cursor-pointer ${isMobile ? 'mobile-frame' : 'picture-frame'}`}>
                 <div className="frame-content">
                   <Image
                     src="/images/HomeImages/smartNation-frame.png"
@@ -101,7 +119,7 @@ const WorkGallery = () => {
           {/* Frame 2 - Abhiyantrik Website */}
           <div className="flex-shrink-0">
             <Link href="/works/abhiyantrikWebsite" className="block">
-              <figure className="picture-frame cursor-pointer">
+              <figure className={`cursor-pointer ${isMobile ? 'mobile-frame' : 'picture-frame'}`}>
                 <div className="frame-content">
                   <Image
                     src="/images/HomeImages/abhiyantrik-frame.png"
@@ -124,9 +142,9 @@ const WorkGallery = () => {
 
           {/* Frame 3 - Project 3 (Coming Soon) */}
           <div className="flex-shrink-0">
-            <figure className="picture-frame cursor-not-allowed">
+            <figure className={`cursor-not-allowed ${isMobile ? 'mobile-frame' : 'picture-frame'}`}>
                 <div className="absolute inset-0 flex items-center justify-center z-10">
-                  <span className="text-white text-xl font-md" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                  <span className="text-white text-lg md:text-xl font-md" style={{ fontFamily: 'Poppins, sans-serif' }}>
                     Posting soon!
                   </span>
                 </div>
@@ -151,9 +169,9 @@ const WorkGallery = () => {
 
           {/* Frame 4 - Project 4 (Coming Soon) */}
           <div className="flex-shrink-0">
-            <figure className="picture-frame cursor-not-allowed">
+            <figure className={`cursor-not-allowed ${isMobile ? 'mobile-frame' : 'picture-frame'}`}>
               <div className="absolute inset-0 flex items-center justify-center z-10">
-                  <span className="text-white text-xl font-md" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                  <span className="text-white text-lg md:text-xl font-md" style={{ fontFamily: 'Poppins, sans-serif' }}>
                     cooking
                   </span>
                 </div>
@@ -178,11 +196,9 @@ const WorkGallery = () => {
           </div>
 
           {/* Extra spacing at the end */}
-          <div style={{ width: '100px' }}></div>
+          <div style={{ width: isMobile ? '20px' : '100px' }}></div>
         </div>
       </div>
-
-      
     </div>
   );
 };

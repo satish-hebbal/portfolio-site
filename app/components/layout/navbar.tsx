@@ -11,7 +11,6 @@ gsap.registerPlugin(ScrollToPlugin)
 const navItems = [
   { name: "Home", href: "/" },
   { name: "Work", href: "/work" },
-  { name: "Unplugged", href: "/unplugged", disabled: true },
   { name: "Contact", href: "/contact" },
 ]
 
@@ -129,6 +128,9 @@ export default function Navbar() {
     } else if (item.name === "Home") {
       if (pathname !== '/') {
         navigateWithTransition('/')
+      } else {
+        // Already on home, scroll to top
+        scrollToTop()
       }
     } else {
       // Handle other navigation items
@@ -149,6 +151,17 @@ export default function Navbar() {
         router.push(href)
         if (callback) callback()
       }
+    })
+  }
+
+  const scrollToTop = () => {
+    gsap.to(window, {
+      duration: 1.2,
+      scrollTo: {
+        y: 0,
+        offsetY: 0
+      },
+      ease: "power2.inOut"
     })
   }
 
@@ -231,18 +244,13 @@ export default function Navbar() {
         {navItems.map((item, index) => (
           <div key={item.name} className="flex items-center gap-6">
             <button
-              onClick={(e) => item.disabled ? e.preventDefault() : handleNavigation(item, e)}
-              disabled={item.disabled}
-              className={`text-md font-light transition-all duration-300 relative ${
-                item.disabled 
-                  ? "text-zinc-300 cursor-not-allowed opacity-50"
-                  : `hover:text-orange-500 hover:scale-105 ${
-                      (pathname === item.href) || 
-                      (item.name === "Work" && pathname.startsWith('/works/')) ||
-                      (item.name === "Home" && pathname === '/') 
-                        ? "text-orange-500" 
-                        : "text-zinc-500"
-                    }`
+              onClick={(e) => handleNavigation(item, e)}
+              className={`text-md font-light transition-all duration-300 relative hover:text-orange-500 hover:scale-105 ${
+                (pathname === item.href) || 
+                (item.name === "Work" && pathname.startsWith('/works/')) ||
+                (item.name === "Home" && pathname === '/') 
+                  ? "text-orange-500" 
+                  : "text-zinc-500"
               }`}
               style={{ fontFamily: 'Poppins, sans-serif', fontWeight: '400' }}
             >

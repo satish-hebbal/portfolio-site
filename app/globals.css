@@ -53,7 +53,7 @@
   --foreground: #171717;
 }
 
-@theme inline {
+:root {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -183,3 +183,17 @@ body {
     rgba(0, 0, 0, 1) 100%
   );
 }
+
+.grid-bg-mobile {
+  background-image: linear-gradient(rgba(0, 0, 0, .05) .1em, transparent .1em), linear-gradient(90deg, rgba(0, 0, 0, .05) .1em, transparent .1em);
+  background-size: 2em 2em;
+  background-position: 1em 1em;
+}
+
+@media (min-width: 768px) {
+  .grid-bg-mobile {
+    background-size: 3em 3em;
+    background-position: 1.5em 1.5em;
+  }
+}
+
