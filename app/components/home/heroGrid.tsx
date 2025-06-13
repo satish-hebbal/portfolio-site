@@ -13,7 +13,7 @@ const HeroSection = () => {
       await navigator.clipboard.writeText('satishdezn@gmail.com');
       setShowCopied(true);
       setTimeout(() => setShowCopied(false), 2000);
-    } catch (err) {
+    } catch {
       // Fallback: open email client if clipboard fails
       window.location.href = 'mailto:satishdezn@gmail.com';
     }
@@ -26,7 +26,7 @@ const HeroSection = () => {
         <div className="flex flex-col md:grid md:grid-cols-2 gap-0 h-full min-h-[calc(100vh-8rem)] rounded-xl border border-gray-300">
           
           {/* Grid 1 - Introduction Text */}
-          <div className="flex items-center justify-center rounded-t-xl md:rounded-tl-xl md:rounded-tr-none p-4 md:p-6 border-b border-gray-300 bg-zinc-50 md:border-r">`
+          <div className="flex items-center justify-center rounded-t-xl md:rounded-tl-xl md:rounded-tr-none p-4 md:p-6 border-b border-gray-300 bg-zinc-50 md:border-r">
             <h1 className="text-2xl md:text-4xl leading-tight text-center md:text-left" style={{ fontFamily: 'Garamond, Georgia, serif' }}>
               <span className="text-gray-500">Hey,</span> I&apos;m{' '}
               <span className="text-black">Satish Hebbal</span>
@@ -95,14 +95,14 @@ const HeroSection = () => {
               
               {/* Description Text */}
               <p className="text-gray-500 text-base md:text-lg leading-relaxed mb-4 text-center md:text-left" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: '400' }}>
-                "Over time, I&apos;ve grown into a designer who cares deeply about how things feel, not just how they look. I thrive in crafting intuitive, 
-                functional experiences across apps and digital products — always chasing that sweet spot between clarity and emotion."
+                <q>Over time, I&apos;ve grown into a designer who cares deeply about how things feel, not just how they look. I thrive in crafting intuitive, 
+                functional experiences across apps and digital products — always chasing that sweet spot between clarity and emotion.</q>
               </p>
 
               {/* Let's Connect Section */}
               <div className="w-full">
                 <h3 className="text-lg font-medium text-gray-700 mb-3" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: '500' }}>
-                  Let's Connect
+                  Let&apos;s Connect
                 </h3>
                 <button 
                   onClick={handleEmailClick}
