@@ -69,12 +69,12 @@ const HeroSection = () => {
 
           {/* Grid 3 - Profile Image */}
           <div className="flex flex-col justify-end items-center p-4 md:p-6 pb-0 md:pb-0 md:border-r md:border-b border-gray-300">
-            <p className={`text-xs text-gray-400 text-center leading-relaxed mb-4 md:mb-6 transition-opacity duration-300 ease-in-out ${
+            <p className={`text-xs text-gray-400 text-center align-text-top leading-relaxed mb-4 md:mb-6 transition-opacity duration-300 ease-in-out ${
               showLogoText ? 'opacity-100' : 'opacity-0'
             }`} 
                style={{ fontFamily: 'Poppins, sans-serif', fontWeight: '400' }}>
              <q>
-                A minimal symbol of the <span className="bg-gradient-to-r from-yellow-400 to-red-600 bg-clip-text text-transparent">Kannada</span> letter &apos;ಸ&apos; (Sã), rooted in tradition.
+                A minimal symbol of the <span className="bg-gradient-to-r from-yellow-600 to-red-600 bg-clip-text text-transparent">Kannada</span> letter &apos;ಸ&apos; (Sã), rooted in tradition.
               </q>
             </p>
             <div className="w-60 h-72 md:w-80 md:h-96 rounded-lg relative">
