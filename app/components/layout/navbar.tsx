@@ -1,7 +1,7 @@
 "use client"
 
 import { usePathname, useRouter } from "next/navigation"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { gsap } from "gsap"
 import { ScrollToPlugin } from "gsap/ScrollToPlugin"
 
@@ -11,6 +11,7 @@ gsap.registerPlugin(ScrollToPlugin)
 const navItems = [
   { name: "Home", href: "/" },
   { name: "Work", href: "/work" },
+  { name: "Unplugged", href: "/unplugged" },
   { name: "Contact", href: "/contact" },
 ]
 
@@ -18,7 +19,13 @@ export default function Navbar() {
   const pathname = usePathname()
   const router = useRouter()
   const navRef = useRef<HTMLElement>(null)
+  const [isMounted, setIsMounted] = useState(false)
   
+  // Prevent hydration mismatch by waiting for client mount
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
   useEffect(() => {
     // Create the SVG displacement map for liquid glass effect
     const mapSvg = `
@@ -113,6 +120,18 @@ export default function Navbar() {
           }, 500)
         })
       }
+    } else if (item.name === "Unplugged") {
+      if (pathname === '/') {
+        // Already on home, scroll to unplugged
+        scrollToUnpluggedSection()
+      } else {
+        // Navigate to home and scroll to unplugged
+        navigateWithTransition('/', () => {
+          setTimeout(() => {
+            scrollToUnpluggedSection()
+          }, 500)
+        })
+      }
     } else if (item.name === "Contact") {
       if (pathname === '/') {
         // Already on home, scroll to contact
@@ -187,6 +206,26 @@ export default function Navbar() {
     }
   }
 
+  const scrollToUnpluggedSection = () => {
+    // Find unplugged section
+    const unpluggedSection = document.querySelector('[data-section="unplugged"]') ||
+                            // Try to find by text content containing "Unplugged"
+                            Array.from(document.querySelectorAll('h2, h3')).find(el => 
+                              el.textContent?.toLowerCase().includes('unplugged')
+                            )?.closest('div')
+
+    if (unpluggedSection) {
+      gsap.to(window, {
+        duration: 1.2,
+        scrollTo: {
+          y: unpluggedSection,
+          offsetY: 100
+        },
+        ease: "power2.inOut"
+      })
+    }
+  }
+
   const scrollToContactSection = () => {
     // Find contact section
     const contactSection = document.querySelector('[data-section="contact"]') ||
@@ -226,10 +265,14 @@ export default function Navbar() {
   }, [pathname])
   
   return (
-    <div className="sticky top-0 z-50 flex justify-center p-4">
+    <div className="fixed top-0 left-0 right-0 z-50 flex justify-center p-4 pointer-events-none">
       <nav 
         ref={navRef}
-        className="flex items-center gap-6 rounded-full px-6 py-2 relative transition-all duration-300 hover:shadow-lg"
+        className={`flex items-center rounded-full py-2 relative transition-all duration-300 hover:shadow-lg pointer-events-auto ${
+          isMounted 
+            ? "gap-3 md:gap-6 px-4 md:px-6" 
+            : "gap-6 px-6"
+        }`}
         style={{
           background: 'rgba(255, 255, 255, 0.08)',
           backdropFilter: 'url(#liquid-lens) blur(2px)',
@@ -242,21 +285,33 @@ export default function Navbar() {
         }}
       >
         {navItems.map((item, index) => (
-          <div key={item.name} className="flex items-center gap-6">
+          <div key={item.name} className={`flex items-center ${
+            isMounted ? "gap-3 md:gap-6" : "gap-6"
+          }`}>
             <button
               onClick={(e) => handleNavigation(item, e)}
-              className={`text-md font-light transition-all duration-300 relative hover:text-orange-500 hover:scale-105 ${
-                (pathname === item.href) || 
+              className={`font-light transition-all duration-300 relative hover:text-orange-500 hover:scale-105 ${
+                isMounted ? "text-sm md:text-md" : "text-md"
+              } ${
+                (pathname === item.href) ||
                 (item.name === "Work" && pathname.startsWith('/works/')) ||
-                (item.name === "Home" && pathname === '/') 
-                  ? "text-orange-500" 
-                  : "text-zinc-500"
+                (item.name === "Home" && pathname === '/')
+                  ? "text-orange-500"
+                  : (item.name === "Unplugged" && pathname.startsWith('/unplugged/'))
+                    ? "text-orange-400"
+                    : pathname.startsWith('/unplugged/')
+                      ? "text-gray-300"
+                      : "text-zinc-500"
               }`}
               style={{ fontFamily: 'Poppins, sans-serif', fontWeight: '400' }}
             >
               {item.name}
             </button>
-            {index < navItems.length - 1 && <span className="text-zinc-300 text-[8px]">•</span>}
+            {index < navItems.length - 1 && (
+              <span className={`text-zinc-300 ${
+                isMounted ? "text-[6px] md:text-[8px]" : "text-[8px]"
+              }`}>•</span>
+            )}
           </div>
         ))}
       </nav>
