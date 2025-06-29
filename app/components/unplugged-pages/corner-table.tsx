@@ -202,7 +202,7 @@ const CornerTable = () => {
             Adding Character
           </h2>
           <p className="text-lg text-white leading-relaxed" style={{ fontFamily: 'Garamond, Georgia, serif' }}>
-            Cut the shelves from an old plywood sheet I had stored away. Added rounded corners because details matter - it's these small touches that make something look intentional rather than thrown together.
+            Cut the shelves from an old plywood sheet I had stored away. Added rounded corners because details matter - it&apos;s these small touches that make something look intentional rather than thrown together.
           </p>
           <div className="w-full">
             <Image 
@@ -765,7 +765,7 @@ const CornerTable = () => {
                     </h2>
                     
                     <p className="text-2xl text-white leading-relaxed m-0" style={{ fontFamily: 'Garamond, Georgia, serif' }}>
-                      Cut the shelves from an old plywood sheet I had stored away. Added rounded corners because details matter - it's these small touches that make something look intentional rather than thrown together.
+                      Cut the shelves from an old plywood sheet I had stored away. Added rounded corners because details matter - it&apos;s these small touches that make something look intentional rather than thrown together.
                     </p>
                   </div>
 
